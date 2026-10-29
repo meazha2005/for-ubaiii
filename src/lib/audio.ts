@@ -1,8 +1,7 @@
-// Web Audio API generator for cute sound effects & sweet music
+// Web Audio API generator for sound effects & melody
 class SoundManager {
   private ctx: AudioContext | null = null;
   public enabled: boolean = true;
-  private isMusicPlaying: boolean = false;
 
   private initCtx() {
     if (typeof window === "undefined") return null;
@@ -46,7 +45,33 @@ class SoundManager {
     }
   }
 
-  // Error buzzer / bonk
+  // Balloon pop sound
+  playPop() {
+    if (!this.enabled) return;
+    try {
+      const ctx = this.initCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.08);
+
+      gain.gain.setValueAtTime(0.35, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.09);
+    } catch {
+      // Ignore
+    }
+  }
+
+  // Error buzzer
   playError() {
     if (!this.enabled) return;
     try {
@@ -72,15 +97,13 @@ class SoundManager {
     }
   }
 
-  // Sweet music melody for "Open it"
+  // Sweet music melody
   playMelody() {
     if (!this.enabled) return;
     try {
       const ctx = this.initCtx();
       if (!ctx) return;
 
-      // Romantic music box notes (C major / pentatonic peaceful tune)
-      // Notes: C5, E5, G5, B5, C6, G5, E5, C5, F5, A5, C6
       const melody = [
         { f: 523.25, t: 0.0, d: 0.35 },  // C5
         { f: 659.25, t: 0.35, d: 0.35 }, // E5
@@ -99,7 +122,6 @@ class SoundManager {
         osc.type = "sine";
         osc.frequency.setValueAtTime(f, ctx.currentTime + t);
 
-        // Music-box bell envelope
         gain.gain.setValueAtTime(0.22, ctx.currentTime + t);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + d);
 
