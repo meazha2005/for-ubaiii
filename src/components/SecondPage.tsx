@@ -16,11 +16,11 @@ export default function SecondPage({ onOpenIt }: SecondPageProps) {
       <div className="absolute top-20 right-6 w-40 h-16 bg-white/65 rounded-full blur-[1px] pointer-events-none" />
       <div className="absolute bottom-12 left-8 w-36 h-14 bg-white/55 rounded-full blur-[1px] pointer-events-none" />
 
-      {/* Floating Stars and Hearts in background */}
+      {/* Floating Stars in background */}
       <div className="absolute top-6 left-8 text-amber-300 text-xl opacity-75 animate-pulse">★</div>
       <div className="absolute top-16 right-12 text-amber-300 text-2xl opacity-75 animate-pulse">★</div>
-      <div className="absolute top-36 left-12 text-pink-300 text-base opacity-70">♥</div>
-      <div className="absolute top-28 right-24 text-pink-300 text-sm opacity-70">♥</div>
+      <div className="absolute top-36 left-12 text-amber-200 text-base opacity-70">✦</div>
+      <div className="absolute top-28 right-24 text-amber-200 text-sm opacity-70">✦</div>
       <div className="absolute bottom-20 right-8 text-amber-300 text-base opacity-70">★</div>
 
       {/* Center White Card */}

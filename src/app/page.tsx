@@ -7,13 +7,15 @@ import PasscodeBoxes from "@/components/PasscodeBoxes";
 import SecondPage from "@/components/SecondPage";
 import BalloonsPage from "@/components/BalloonsPage";
 import MessagePage from "@/components/MessagePage";
+import VersesSlides from "@/components/VersesSlides";
+import BoyAndCatPage from "@/components/BoyAndCatPage";
 import FinalPage from "@/components/FinalPage";
 import { sounds } from "@/lib/audio";
 import { Volume2, VolumeX, AlertCircle } from "lucide-react";
 
 const CORRECT_PIN = "0601";
 
-type FlowStep = "passcode" | "second_page" | "balloons" | "message" | "final";
+type FlowStep = "passcode" | "second_page" | "balloons" | "message" | "verses" | "boy_cat" | "final";
 
 export default function MobilePasscodeApp() {
   const [currentStep, setCurrentStep] = useState<FlowStep>("passcode");
@@ -249,12 +251,32 @@ export default function MobilePasscodeApp() {
 
         {/* STEP 4: Full Page Message with "Next" button */}
         {currentStep === "message" && (
-          <div className="w-full h-full min-h-[100dvh] sm:min-h-[820px] animate-pop">
-            <MessagePage onNext={() => setCurrentStep("final")} />
+          <div className="w-full h-full max-h-[100dvh] sm:max-h-[880px] overflow-y-auto overscroll-contain animate-pop">
+            <MessagePage onNext={() => setCurrentStep("verses")} />
           </div>
         )}
 
-        {/* STEP 5: Final Resolution Screen */}
+        {/* STEP 5: Quranic Verses Slides (6 Verses) */}
+        {currentStep === "verses" && (
+          <div className="w-full h-full min-h-[100dvh] sm:min-h-[820px] animate-pop">
+            <VersesSlides
+              onFinish={() => setCurrentStep("boy_cat")}
+              onBackToMessage={() => setCurrentStep("message")}
+            />
+          </div>
+        )}
+
+        {/* STEP 6: Boy and Cat Page ("Tap now" -> Heartfelt Plea) */}
+        {currentStep === "boy_cat" && (
+          <div className="w-full h-full max-h-[100dvh] sm:max-h-[880px] overflow-y-auto overscroll-contain animate-pop">
+            <BoyAndCatPage
+              onNext={() => setCurrentStep("final")}
+              onBackToVerses={() => setCurrentStep("verses")}
+            />
+          </div>
+        )}
+
+        {/* STEP 7: Final Resolution Screen */}
         {currentStep === "final" && (
           <div className="w-full h-full min-h-[100dvh] sm:min-h-[820px] animate-pop">
             <FinalPage onRestart={handleLockAgain} />

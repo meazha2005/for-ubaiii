@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Heart } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface MessagePageProps {
   onNext: () => void;
@@ -15,12 +15,12 @@ export default function MessagePage({ onNext }: MessagePageProps) {
       <div className="w-full flex items-center justify-between pt-2 px-1">
         <span className="text-amber-300 text-lg opacity-75">★</span>
         <div className="inline-flex items-center gap-1.5 bg-white/80 px-4 py-1 rounded-full shadow-xs border border-pink-100">
-          <Heart className="w-3.5 h-3.5 fill-[#e11d48] text-[#e11d48]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#e11d48]" />
           <span className="text-[#96374e] font-black text-xs uppercase tracking-wider">
             From Lusu to Ubaiii
           </span>
         </div>
-        <span className="text-pink-300 text-base opacity-75">♥</span>
+        <span className="text-amber-300 text-sm opacity-75">★</span>
       </div>
 
       {/* Cute Pleading Apology Cat Graphic */}
@@ -82,7 +82,7 @@ export default function MessagePage({ onNext }: MessagePageProps) {
         
         {/* The Exact Tamil/Tanglish Message Requested */}
         <p className="text-[14px] xs:text-[15px] sm:text-[16px] text-[#334155] leading-[1.75] font-semibold text-justify tracking-normal select-text">
-          Suthi green iruku but indha red mattum ipo thaniya theridhu. Ipo indha red ballon dhan enoda mistakes.Enkittayum knjm nalla vishayangal irundhurukkum la? 🥺 Naan senja oru mistake-naala, enkitta irundha ella nalla vishayangalum marandhu poiduma? Enna pathi neenga oru mudivu edukkuradhukku munnaadi, nalla moments-aiyum konjam ninaichu paarunga. Oru mistake-naala naan senja ella nalla vishayangalum marandhura alavukku naan avlo mosamanavala? En mistake-ai naan othukuren, aana adha mattum vechu ennai mothama odhuki vechiradhinga pls. Enkittayum   knjm  nalladhu irundhuchu nu neenga konjamavathu ninaichu paarunga.
+          Suthi green iruku but indha red mattum ipo thaniya theridhu. Ipo indha red ballon dhan enoda mistakes.Enkittayum knjm nalla vishayangal irundhurukkum la? 🥺 Naan senja oru mistake-naala, enkitta irundha ella nalla vishayangalum marandhu poiduma? Enna pathi neenga oru mudivu edukkuradhukku munnaadi, nalla moments-aiyum konjam ninaichu paarunga. Oru mistake-naala naan avlo mosamanavala? En mistake-ai naan othukuren, aana adha mattum vechu ennai mothama odhuki vechiradhinga pls. Enkittayum   knjm  nalladhu irundhuchu nu neenga konjamavathu ninaichu paarunga.
         </p>
 
       </div>

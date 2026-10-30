@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import CatIllustration from "./CatIllustration";
-import { Lock, Heart, Sparkles, RefreshCw } from "lucide-react";
+import { Lock, Sparkles, RefreshCw } from "lucide-react";
 
 interface UnlockedScreenProps {
   onLock: () => void;
@@ -62,7 +62,7 @@ export default function UnlockedScreen({
       <div className="my-3 flex flex-col items-center">
         <CatIllustration state="success" useAiImage={useAiImage} />
         <div className="mt-3 inline-flex items-center gap-1 bg-[#96374e] text-white px-3 py-0.5 rounded-full text-xs font-bold shadow-xs">
-          <Heart className="w-3.5 h-3.5 fill-white text-white" />
+          <Sparkles className="w-3.5 h-3.5 text-white" />
           <span>Unlocked Successfully!</span>
         </div>
       </div>
@@ -82,15 +82,15 @@ export default function UnlockedScreen({
           onClick={() => setOpenedEnvelope(!openedEnvelope)}
           className="w-full mt-1 py-2 px-3 bg-[#ffd9e1] hover:bg-[#ffccd6] text-[#8e2942] rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-[#96374e]/20"
         >
-          <Heart className="w-3.5 h-3.5 fill-[#8e2942]" />
-          <span>{openedEnvelope ? "Hide Secret Note" : "Open Secret Note 💌"}</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#8e2942]" />
+          <span>{openedEnvelope ? "Hide Secret Note" : "Open Secret Note"}</span>
         </button>
 
         {openedEnvelope && (
           <div className="w-full p-3 bg-pink-50/90 rounded-xl text-left border border-pink-200/60 animate-pop">
             <p className="text-[11px] text-[#852a3f] leading-normal italic font-medium">
               &ldquo;Every journey that starts with Bismillah brings beauty and grace.
-              Thank you for visiting!&rdquo; 💖
+              Thank you for visiting!&rdquo; 🌸
             </p>
           </div>
         )}

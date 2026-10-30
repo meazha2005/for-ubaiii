@@ -161,12 +161,6 @@ export default function CatIllustration({
           <g stroke="#93384f" strokeWidth="4" strokeLinecap="round">
             <path d="M 82 126 Q 94 112 106 126" fill="none" />
             <path d="M 134 126 Q 146 112 158 126" fill="none" />
-            {/* Small celebration hearts near head */}
-            <path
-              d="M 50 65 C 45 55 35 55 35 65 C 35 75 50 85 50 85 C 50 85 65 75 65 65 C 65 55 55 55 50 65 Z"
-              fill="#E11D48"
-              transform="scale(0.35) translate(40, 40)"
-            />
           </g>
         ) : (
           /* Normal Big Sparkly Eyes */
