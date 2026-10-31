@@ -193,7 +193,7 @@ export default function MobilePasscodeApp() {
                 </div>
               </div>
 
-              {/* Heart Keypad */}
+              {/* Cat Paw Keypad */}
               <div className="w-full max-w-[280px] xs:max-w-[310px] flex flex-col items-center gap-2 xs:gap-2.5 mt-1">
                 <div className="flex justify-between w-full">
                   <HeartButton label="1" onClick={() => handleDigit("1")} />
