@@ -148,7 +148,7 @@ export default function BalloonsPage({ onRedBalloonTap }: BalloonsPageProps) {
       >
         {/* Pulsing "Tap here" Tag above the balloon */}
         <div className="absolute -top-7 px-3 py-1 bg-red-600 text-white font-black text-xs xs:text-sm rounded-full shadow-lg border-2 border-white animate-bounce whitespace-nowrap">
-          Tap here 👆
+          Tap here 👇
         </div>
 
         {/* Red Balloon SVG */}

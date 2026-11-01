@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { sounds } from "@/lib/audio";
 import { Sparkles, ChevronRight } from "lucide-react";
@@ -14,11 +14,8 @@ export default function BoyAndCatPage({
   onNext,
   onBackToVerses,
 }: BoyAndCatPageProps) {
-  const [showBoyMessage, setShowBoyMessage] = useState(false);
-
-  const handleBoyClick = () => {
+  const handleImageClick = () => {
     sounds.playMelody();
-    setShowBoyMessage(true);
   };
 
   return (
@@ -85,28 +82,17 @@ export default function BoyAndCatPage({
 
         {/* ================= BELOW: THE EMOTIONAL BOY & CAT IMAGE ================= */}
         <div
-          onClick={handleBoyClick}
+          onClick={handleImageClick}
           className="relative w-full rounded-[28px] overflow-hidden bg-white/90 shadow-[0_16px_36px_rgba(230,170,185,0.3)] border border-pink-100 p-2 sm:p-2.5 cursor-pointer group transition-transform active:scale-[0.98]"
-          title="Click on the boy"
         >
-          {/* Subtle click hint if not clicked yet */}
-          {!showBoyMessage && (
-            <div className="absolute top-3 right-3 z-10 px-2.5 py-1 bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold rounded-full shadow-md animate-bounce pointer-events-none flex items-center gap-1">
-              <span>Tap the boy</span>
-              <span>👆</span>
+          {/* Speech Bubble: Directly shown above the boy's head without any need to tap */}
+          <div className="absolute top-2 right-2 xs:right-4 z-20 max-w-[215px]">
+            <div className="relative bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border-2 border-[#96374e]/40 text-[#852a3f] text-xs sm:text-[13px] font-black leading-snug text-center select-text">
+              &ldquo;i&apos;m here u got me again. Don&apos;t be sad&rdquo;
+              {/* Speech bubble arrow pointing down toward boy's head */}
+              <div className="absolute -bottom-2 right-12 w-3.5 h-3.5 bg-white border-r-2 border-b-2 border-[#96374e]/40 transform rotate-45" />
             </div>
-          )}
-
-          {/* Speech Bubble: Appears right above the boy's head when clicked */}
-          {showBoyMessage && (
-            <div className="absolute top-2 right-2 xs:right-4 z-20 animate-pop max-w-[210px]">
-              <div className="relative bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border-2 border-[#96374e]/40 text-[#852a3f] text-xs sm:text-[13px] font-black leading-snug text-center select-text">
-                &ldquo;i&apos;m here u got me again. Don&apos;t be sad&rdquo;
-                {/* Speech bubble arrow pointing down toward boy's head */}
-                <div className="absolute -bottom-2 right-12 w-3.5 h-3.5 bg-white border-r-2 border-b-2 border-[#96374e]/40 transform rotate-45" />
-              </div>
-            </div>
-          )}
+          </div>
 
           {/* The Uploaded Image: Crying Kitten & Boy */}
           <div className="relative w-full aspect-[539/463] rounded-2xl overflow-hidden bg-gradient-to-b from-transparent to-pink-50/30">
@@ -117,11 +103,6 @@ export default function BoyAndCatPage({
               className="object-contain"
               priority
             />
-          </div>
-
-          {/* Bottom caption under image */}
-          <div className="text-center pt-1.5 pb-0.5 text-[11px] text-[#96374e]/70 font-semibold">
-            {showBoyMessage ? "✨ Ubaiii is right here with you" : "Tap on the boy to hear him"}
           </div>
         </div>
 
