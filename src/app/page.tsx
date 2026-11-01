@@ -10,12 +10,13 @@ import MessagePage from "@/components/MessagePage";
 import VersesSlides from "@/components/VersesSlides";
 import BoyAndCatPage from "@/components/BoyAndCatPage";
 import FinalPage from "@/components/FinalPage";
+import PoemPage from "@/components/PoemPage";
 import { sounds } from "@/lib/audio";
 import { Volume2, VolumeX, AlertCircle } from "lucide-react";
 
 const CORRECT_PIN = "0601";
 
-type FlowStep = "passcode" | "second_page" | "balloons" | "message" | "verses" | "boy_cat" | "final";
+type FlowStep = "passcode" | "second_page" | "balloons" | "message" | "verses" | "boy_cat" | "final" | "poem";
 
 export default function MobilePasscodeApp() {
   const [currentStep, setCurrentStep] = useState<FlowStep>("passcode");
@@ -279,7 +280,20 @@ export default function MobilePasscodeApp() {
         {/* STEP 7: Final Resolution Screen */}
         {currentStep === "final" && (
           <div className="w-full h-full min-h-[100dvh] sm:min-h-[820px] animate-pop">
-            <FinalPage onRestart={handleLockAgain} />
+            <FinalPage
+              onNext={() => setCurrentStep("poem")}
+              onRestart={handleLockAgain}
+            />
+          </div>
+        )}
+
+        {/* STEP 8: The 9 Stanzas Poem (Separate Last Page) */}
+        {currentStep === "poem" && (
+          <div className="w-full h-full max-h-[100dvh] sm:max-h-[880px] overflow-y-auto overscroll-contain animate-pop">
+            <PoemPage
+              onBack={() => setCurrentStep("final")}
+              onRestart={handleLockAgain}
+            />
           </div>
         )}
 

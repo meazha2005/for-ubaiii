@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { sounds } from "@/lib/audio";
-import { Sparkles, ChevronRight } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface BoyAndCatPageProps {
   onNext: () => void;
@@ -14,8 +14,10 @@ export default function BoyAndCatPage({
   onNext,
   onBackToVerses,
 }: BoyAndCatPageProps) {
-  const handleImageClick = () => {
-    sounds.playMelody();
+  const handleMessageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    sounds.playTap();
+    onNext();
   };
 
   return (
@@ -81,18 +83,20 @@ export default function BoyAndCatPage({
         </div>
 
         {/* ================= BELOW: THE EMOTIONAL BOY & CAT IMAGE ================= */}
-        <div
-          onClick={handleImageClick}
-          className="relative w-full rounded-[28px] overflow-hidden bg-white/90 shadow-[0_16px_36px_rgba(230,170,185,0.3)] border border-pink-100 p-2 sm:p-2.5 cursor-pointer group transition-transform active:scale-[0.98]"
-        >
-          {/* Speech Bubble: Directly shown above the boy's head without any need to tap */}
-          <div className="absolute top-2 right-2 xs:right-4 z-20 max-w-[215px]">
-            <div className="relative bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border-2 border-[#96374e]/40 text-[#852a3f] text-xs sm:text-[13px] font-black leading-snug text-center select-text">
+        <div className="relative w-full rounded-[28px] overflow-hidden bg-white/90 shadow-[0_16px_36px_rgba(230,170,185,0.3)] border border-pink-100 p-2 sm:p-2.5">
+          {/* Speech Bubble: Clicking on this message from the boy navigates to next page */}
+          <button
+            type="button"
+            onClick={handleMessageClick}
+            className="absolute top-2 right-2 xs:right-4 z-20 max-w-[215px] text-left cursor-pointer group/msg active:scale-95 transition-all select-none"
+            aria-label="Message from the boy: i'm here u got me again. Don't be sad"
+          >
+            <div className="relative bg-white/95 hover:bg-pink-50/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border-2 border-[#96374e]/40 group-hover/msg:border-[#96374e] text-[#852a3f] text-xs sm:text-[13px] font-black leading-snug text-center transition-all">
               &ldquo;i&apos;m here u got me again. Don&apos;t be sad&rdquo;
               {/* Speech bubble arrow pointing down toward boy's head */}
-              <div className="absolute -bottom-2 right-12 w-3.5 h-3.5 bg-white border-r-2 border-b-2 border-[#96374e]/40 transform rotate-45" />
+              <div className="absolute -bottom-2 right-12 w-3.5 h-3.5 bg-white group-hover/msg:bg-pink-50/95 border-r-2 border-b-2 border-[#96374e]/40 group-hover/msg:border-[#96374e] transform rotate-45 transition-colors" />
             </div>
-          </div>
+          </button>
 
           {/* The Uploaded Image: Crying Kitten & Boy */}
           <div className="relative w-full aspect-[539/463] rounded-2xl overflow-hidden bg-gradient-to-b from-transparent to-pink-50/30">
@@ -104,17 +108,6 @@ export default function BoyAndCatPage({
               priority
             />
           </div>
-        </div>
-
-        {/* ================= NEXT BUTTON ================= */}
-        <div className="w-full flex justify-center pt-2 pb-6">
-          <button
-            onClick={onNext}
-            className="w-[200px] xs:w-[220px] py-3.5 bg-[#96374e] hover:bg-[#832e43] active:scale-95 text-white font-black text-base xs:text-lg rounded-full shadow-[0_8px_20px_rgba(150,55,78,0.35)] transition-all cursor-pointer flex items-center justify-center gap-1.5 select-none"
-          >
-            <span>Next</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
 
       </div>

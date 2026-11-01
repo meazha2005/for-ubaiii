@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import confetti from "canvas-confetti";
 import { sounds } from "@/lib/audio";
-import { RefreshCw, Sparkles } from "lucide-react";
+import { RefreshCw, Sparkles, ChevronRight } from "lucide-react";
 
 interface FinalPageProps {
+  onNext: () => void;
   onRestart: () => void;
 }
 
-export default function FinalPage({ onRestart }: FinalPageProps) {
+export default function FinalPage({ onNext, onRestart }: FinalPageProps) {
   const [forgiven, setForgiven] = useState(false);
 
   const handleForgive = () => {
@@ -110,6 +111,17 @@ export default function FinalPage({ onRestart }: FinalPageProps) {
               Your forgiveness means the entire world to Lusu.
               May Allah always keep us happy and united!
             </p>
+
+            <button
+              onClick={() => {
+                sounds.playTap();
+                onNext();
+              }}
+              className="mt-4 flex items-center justify-center gap-2 bg-[#96374e] hover:bg-[#832e43] active:scale-95 text-white font-black text-sm sm:text-base py-3 px-8 rounded-full shadow-[0_8px_20px_rgba(150,55,78,0.35)] transition-all cursor-pointer select-none"
+            >
+              <span>Next ✨</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-2 mt-2">
@@ -126,6 +138,16 @@ export default function FinalPage({ onRestart }: FinalPageProps) {
             >
               <Sparkles className="w-4 h-4 text-white" />
               <span>Yes, I forgive you</span>
+            </button>
+
+            <button
+              onClick={() => {
+                sounds.playTap();
+                onNext();
+              }}
+              className="mt-2 text-xs font-bold text-[#96374e]/60 hover:text-[#96374e] underline transition-colors cursor-pointer"
+            >
+              Skip to final note →
             </button>
           </div>
         )}
