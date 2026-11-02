@@ -117,10 +117,6 @@ export default function PoemPage({ onBack, onRestart }: PoemPageProps) {
                 key={stanza.num}
                 className="flex items-start gap-2.5 p-2.5 rounded-2xl bg-gradient-to-r from-pink-50/50 via-white to-pink-50/30 border border-pink-100/60 shadow-xs"
               >
-                {/* Number Badge */}
-                <div className="w-6 h-6 rounded-full bg-[#96374e] text-white flex items-center justify-center text-xs font-black shrink-0 mt-0.5 shadow-xs">
-                  {stanza.num}
-                </div>
 
                 {/* Stanza Verses */}
                 <div className="flex flex-col gap-0.5 select-text">

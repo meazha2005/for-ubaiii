@@ -233,7 +233,7 @@ export default function FinalPage({ onNext, onRestart }: FinalPageProps) {
         <p className="text-[11px] sm:text-xs font-black tracking-wider text-[#ff5e79] uppercase my-1">
           {isForgiven
             ? "100% FORGIVEN! YOU HEALED LUSU 🌸"
-            : "TAP THE CAT. EACH TAP HEALS A LITTLE."}
+            : "TAP THE CAT THALUKU BULUKU THAKKALI. EACH TAP HEALS A LITTLE."}
         </p>
 
         {/* ================= BIG CIRCULAR CAT TAP BUTTON ================= */}
