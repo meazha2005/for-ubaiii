@@ -298,7 +298,6 @@ export default function FinalPage({ onNext, onRestart }: FinalPageProps) {
             }}
             className="mt-1 text-[11px] sm:text-xs font-bold text-[#96374e]/60 hover:text-[#96374e] underline transition-colors cursor-pointer"
           >
-            Skip to final note →
           </button>
         )}
 
