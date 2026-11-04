@@ -83,12 +83,12 @@ export default function BoyAndCatPage({
         </div>
 
         {/* ================= BELOW: THE EMOTIONAL BOY & CAT IMAGE ================= */}
-        <div className="relative w-full rounded-[28px] overflow-hidden bg-white/90 shadow-[0_16px_36px_rgba(230,170,185,0.3)] border border-pink-100 p-2 sm:p-2.5">
-          {/* Speech Bubble: Clicking on this message from the boy navigates to next page */}
+        <div className="relative w-full rounded-[28px] overflow-hidden bg-white/90 shadow-[0_16px_36px_rgba(230,170,185,0.3)] border border-pink-100 p-2 sm:p-2.5 pt-14 sm:pt-16">
+          {/* Speech Bubble: Positioned above boy's head, blinks, and clicking navigates to next page */}
           <button
             type="button"
             onClick={handleMessageClick}
-            className="absolute top-2 right-2 xs:right-4 z-20 max-w-[215px] text-left cursor-pointer group/msg active:scale-95 transition-all select-none"
+            className="absolute top-2.5 right-2 xs:right-4 z-20 max-w-[215px] text-left cursor-pointer group/msg active:scale-95 transition-all select-none animate-blink"
             aria-label="Message from the boy: i'm here u got me again. Don't be sad"
           >
             <div className="relative bg-white/95 hover:bg-pink-50/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border-2 border-[#96374e]/40 group-hover/msg:border-[#96374e] text-[#852a3f] text-xs sm:text-[13px] font-black leading-snug text-center transition-all">
@@ -99,7 +99,7 @@ export default function BoyAndCatPage({
           </button>
 
           {/* The Uploaded Image: Crying Kitten & Boy */}
-          <div className="relative w-full aspect-[539/463] rounded-2xl overflow-hidden bg-gradient-to-b from-transparent to-pink-50/30">
+          <div className="relative w-full aspect-[569/439] rounded-2xl overflow-hidden bg-gradient-to-b from-transparent to-pink-50/30">
             <Image
               src="/boy-and-cat.png"
               alt="Boy comforting the cute crying kitten"
